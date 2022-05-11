@@ -16,9 +16,6 @@ class Grille :
 
             pygame.draw.line(self.ecran,(0,0,0),ligne[0],ligne[1],2)    # couleur, position de départ, position de fin, épaisseur
 
-
-
-
 class Jeu :
 
     def __init__(self):
