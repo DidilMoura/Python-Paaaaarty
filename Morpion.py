@@ -28,6 +28,21 @@ class Grille :
 
             pygame.draw.line(self.ecran,(0,0,0),ligne[0],ligne[1],2)    # print la grille
             # couleur, position de départ, position de fin, épaisseur
+
+        # afficher les X et O
+
+        for y in range(0,len(self.grille)):
+            for x in range(0,len(self.grille)):
+                if self.grille[y][x] == 'X':
+
+                    pygame.draw.line(self.ecran, (0, 0, 0), (x * 200, y * 200), (200 + (x * 200), 200 + (y * 200)), 3)
+                    pygame.draw.line(self.ecran, (0, 0, 0), ((x * 200), 200 + (y * 200)), (200 + (x * 200), (y * 200)),
+                                     3)
+
+                elif self.grille[y][x] == 'O':
+
+                    pygame.draw.circle(self.ecran, (0, 0, 0), (100 + (x * 200), 100 + (y * 200)), 85, 3)
+
 class Jeu :
 
     def __init__(self):
@@ -64,8 +79,8 @@ class Jeu :
                     self.grille.fixer_la_valeur(position_x,position_y,'X')
 
                 # condition si le compteur de tour est pair ou impair
-                    print(self.compteur, self.compteur / 2)
-                    if self.compteur / 2 == 0:
+                    print(self.compteur, self.compteur % 2)
+                    if self.compteur % 2 == 0:
                         self.grille.fixer_la_valeur(position_x, position_y, self.player_X)
 
                     else: self.grille.fixer_la_valeur(position_x, position_y, self.player_O)
