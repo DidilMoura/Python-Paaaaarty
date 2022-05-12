@@ -95,6 +95,62 @@ class Jeu :
                         # fixer la vameur de compteur_on à Faux
                         self.grille.compteur_on = False
 
+        # recherche du gagnant de la partie
+
+            liste_X = []
+            liste_O = []
+            liste_lignes_X = []
+            liste_lignes_O = []
+            liste_colonnes_X = []
+            liste_colonnes_O = []
+
+            for ligne in range(0,len(self.grille.grille)):
+                for colonne in range (0, len(self.grille.grille)):
+
+                    if self.grille.grille[ligne][colonne]== 'X':
+
+                        X_position = (ligne,colonne)
+                        liste_X.append(X_position)
+
+                    elif self.grille.grille[ligne][colonne]== 'O':
+
+                        O_position = (ligne,colonne)
+                        liste_O.append(O_position)
+
+            if len(liste_X) >= 3:
+                for (ligne,colonne) in liste_X:
+                    liste_lignes_X.append(ligne)
+                    liste_colonnes_X.append(colonne)
+
+        # condition de victoire pour X
+            # condition de victoire horizontale
+                if liste_lignes_X.count(0) == 3 or liste_lignes_X.count(1) == 3 or liste_lignes_X.count(2) == 3 :
+                    print('X a Gagner !!')
+
+            # condition de victoire verticale
+                if liste_colonnes_X.count(0) == 3 or liste_colonnes_X.count(1) == 3 or liste_colonnes_X.count(2) == 3 :
+                    print('X a Gagner !!')
+            # condition de victoire en diagonale
+                if liste_lignes_X == liste_colonnes_X or liste_lignes_X == liste_colonnes_X[::-1] :
+                    print('X a Gagner !!')
+
+            if len(liste_O) >= 3:
+                for (ligne,colonne) in liste_O:
+                    liste_lignes_O.append(ligne)
+                    liste_colonnes_O.append(colonne)
+
+        # condition de victoire pour O
+            # condition de victoire horizontale
+                if liste_lignes_O.count(0) == 3 or liste_lignes_O.count(1) == 3 or liste_lignes_O.count(2) == 3 :
+                    print('O a Gagner !!')
+
+            # condition de victoire verticale
+                if liste_colonnes_O.count(0) == 3 or liste_colonnes_O.count(1) == 3 or liste_colonnes_O.count(2) == 3 :
+                    print('O a Gagner !!')
+            # condition de victoire en diagonale
+                if liste_lignes_O == liste_colonnes_O or liste_lignes_O == liste_colonnes_O[::-1] :
+                    print('O a Gagner !!')
+
                 self.grille.print_grille()
 
             self.ecran.fill((240,240,240))      # couleur de l'écran
