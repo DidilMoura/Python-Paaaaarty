@@ -13,13 +13,21 @@ class Grille :
     #initiation de la grille
         self.grille = [[None for x in range(0,3)]for y in range(0,3)]
 
+    # initiation d'une variable pour vérifier si le compteur est 'ON'
+        self.compteur_on = False
+
 # print la grille
     def print_grille(self):
         print(self.grille)
 
 # fixer les valeurs
     def fixer_la_valeur(self,x,y,valeur):
-        self.grille[y][x]=valeur
+
+    # condition si une case possède la valeur None
+        if self.grille[y][x] == None :
+            self.grille[y][x] = valeur
+            # le compteur est ON
+            self.compteur_on = True
 
 
     def afficher(self):
@@ -74,18 +82,18 @@ class Jeu :
                 #obtenir la position de la souris
                     position = pygame.mouse.get_pos()
                     position_x ,position_y = position[0]//200 ,position[1]//200     # permet de définir des coordonnées simples et uniformes à chaque case de la grille
-                    print(position_x,position_y)
-
-                    self.grille.fixer_la_valeur(position_x,position_y,'X')
 
                 # condition si le compteur de tour est pair ou impair
-                    print(self.compteur, self.compteur % 2)
                     if self.compteur % 2 == 0:
                         self.grille.fixer_la_valeur(position_x, position_y, self.player_X)
 
                     else: self.grille.fixer_la_valeur(position_x, position_y, self.player_O)
 
-                    self.compteur += 1
+                # condition si le compteur ON est vrai
+                    if self.grille.compteur_on:
+                        self.compteur += 1
+                        # fixer la vameur de compteur_on à Faux
+                        self.grille.compteur_on = False
 
                 self.grille.print_grille()
 
