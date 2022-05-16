@@ -17,4 +17,7 @@ particulier comme par exemple :
 Comme dit précédemment, le premier à atteindre la dernière case
 sera la gagnant ^^
 
+Le Trello se situe ci dessous :
+    https://trello.com/b/mvTyuAQC/projet-programmation
+
 Que le meilleur gagne !!
