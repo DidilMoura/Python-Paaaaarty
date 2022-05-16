@@ -164,3 +164,6 @@ if __name__ == '__main__':
     game = Jeu()                 # création d'un objet du type Jeu()
     game.fonction_principale()   # appel de la fonction principale
     pygame.quit()
+
+# Le morpion est terminé
+#Il faudrait ajouter des conditions pour le lié au jeux principal !
