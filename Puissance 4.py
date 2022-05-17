@@ -1,8 +1,3 @@
-# This is a sample Python script.
-
-# Press ⌃R to execute it or replace it with your code.
-# Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
-
 import numpy as np
 import random as random
 import pygame
@@ -48,8 +43,8 @@ class Joueur:
 
 class Puissance4:
     def __init__(self):
-        self.joueurA = Joueur("A", "*", ColorsTerminal.Red, colorUI=ColorsRGB.Red)
-        self.joueurB = Joueur("B", "&", ColorsTerminal.Yellow, colorUI=ColorsRGB.Yellow)
+        self.joueurA = Joueur("A", "*", ColorsTerminal.LightMagenta, colorUI=ColorsRGB.Magenta)
+        self.joueurB = Joueur("B", "&", ColorsTerminal.LightCyan, colorUI=ColorsRGB.Cyan)
         self.board = Board((7,6),
                            {
                                self.joueurA.symbole: self.joueurA.colorTerminal,
@@ -102,7 +97,8 @@ class Puissance4:
                     pygame.draw.rect(self.window, ColorsRGB.Black, (0, 0, self._width, self._squarePixel))
                     posx = event.pos[0]
                     pygame.draw.circle(self.window, joueur.colorUI, (posx, int(self._squarePixel / 2)), self._radius)
-                if event.type == pygame.MOUSEBUTTONDOWN:
+                    # reconnaitre seulement le clic gauche et non tous les clics
+                if event.type == pygame.MOUSEBUTTONDOWN and pygame.mouse.get_pressed()[0]:
                     pygame.draw.rect(self.window, ColorsRGB.Black, (0, 0, self._width, self._squarePixel))
                     posx = event.pos[0]
                     idx = int(math.floor(posx / self._squarePixel))
