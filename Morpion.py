@@ -76,7 +76,7 @@ class Jeu :
 
                 if event.type == pygame.QUIT:
                     sys.exit()
-                #ajout de l'évènement qui correspond au clic droit
+                #ajout de l'évènement qui correspond au clic gauche
                 if event.type == pygame.MOUSEBUTTONDOWN and pygame.mouse.get_pressed()[0]:
 
                 #obtenir la position de la souris
