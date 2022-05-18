@@ -116,40 +116,48 @@ class Jeu :
 
                         O_position = (ligne,colonne)
                         liste_O.append(O_position)
-
+                        
+        # condition de victoire pour X
             if len(liste_X) >= 3:
                 for (ligne,colonne) in liste_X:
                     liste_lignes_X.append(ligne)
                     liste_colonnes_X.append(colonne)
 
-        # condition de victoire pour X
             # condition de victoire horizontale
                 if liste_lignes_X.count(0) == 3 or liste_lignes_X.count(1) == 3 or liste_lignes_X.count(2) == 3 :
                     print('X a Gagner !!')
+                    return exit
 
             # condition de victoire verticale
                 if liste_colonnes_X.count(0) == 3 or liste_colonnes_X.count(1) == 3 or liste_colonnes_X.count(2) == 3 :
                     print('X a Gagner !!')
+                    return exit
+
             # condition de victoire en diagonale
                 if liste_lignes_X == liste_colonnes_X or liste_lignes_X == liste_colonnes_X[::-1] :
                     print('X a Gagner !!')
+                    return exit
 
+        # condition de victoire pour O
             if len(liste_O) >= 3:
                 for (ligne,colonne) in liste_O:
                     liste_lignes_O.append(ligne)
                     liste_colonnes_O.append(colonne)
 
-        # condition de victoire pour O
             # condition de victoire horizontale
                 if liste_lignes_O.count(0) == 3 or liste_lignes_O.count(1) == 3 or liste_lignes_O.count(2) == 3 :
                     print('O a Gagner !!')
+                    return exit
 
             # condition de victoire verticale
                 if liste_colonnes_O.count(0) == 3 or liste_colonnes_O.count(1) == 3 or liste_colonnes_O.count(2) == 3 :
                     print('O a Gagner !!')
+                    return exit
+
             # condition de victoire en diagonale
                 if liste_lignes_O == liste_colonnes_O or liste_lignes_O == liste_colonnes_O[::-1] :
                     print('O a Gagner !!')
+                    return exit
 
                 self.grille.print_grille()
 
