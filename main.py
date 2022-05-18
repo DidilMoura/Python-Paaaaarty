@@ -1,5 +1,6 @@
 import pygame
 pygame.init()
+from game import game
 
 #initialisation de la fenêtre de jeu
 pygame.display.set_caption("Python Parthy")
@@ -10,9 +11,9 @@ screen.blit(background, (0, 0)) #applique le background à la fenêtre
 
 #bouton nouvelle partie
 color = (170, 170, 170)
-pygame.draw.rect(screen, color, pygame.Rect(150, 300, 300, 50))
-smallfont = pygame.font.SysFont('Corbel',35)
-text = smallfont.render('New Game', True, (0, 0, 0))
+new_game_button = pygame.draw.rect(screen, color, pygame.Rect(150, 300, 300, 50))
+small_font = pygame.font.SysFont('Corbel', 35)
+text = small_font.render('New Game', True, (0, 0, 0))
 screen.blit(text, (233, 310))
 
 
@@ -30,5 +31,14 @@ while running:
         if event.type == pygame.QUIT:
             running = False
             pygame.quit()
+
+        elif event.type == pygame.MOUSEBUTTONDOWN:
+            if new_game_button.collidepoint(event.pos):
+                pygame.display.quit()
+                game()
+
+
+
+
 
 
