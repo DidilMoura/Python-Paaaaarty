@@ -98,27 +98,38 @@ class Puissance4:
                     pygame.draw.rect(self.window, ColorsRGB.Black, (0, 0, self._width, self._squarePixel))
                     pos_x = event.pos[0]
                     pygame.draw.circle(self.window, joueur.colorUI, (pos_x, int(self._squarePixel / 2)), self._radius)
+
                     # reconnaitre seulement le clic gauche et non tous les clics
                 if event.type == pygame.MOUSEBUTTONDOWN and pygame.mouse.get_pressed()[0]:
                     pygame.draw.rect(self.window, ColorsRGB.Black, (0, 0, self._width, self._squarePixel))
                     pos_x = event.pos[0]
                     idx = int(math.floor(pos_x / self._squarePixel))
-                    self.board.fullColumn(idx)
+                    # relancer la boucle si on essaie de fill un index qui a atteint la valeur max
+                    if self.board.fullColumn(idx):
+                        continue
+
                     row = self.setTokenBoard(idx, joueur.symbole)
                     print(self.board)
+
                     if self.alignToken((row, idx), joueur.symbole) >= 4:
                         joueur.numberOfVictory += 1
+
                         label = self.font.render(
                             str(self.joueurA.numberOfVictory) + " - " + str(self.joueurB.numberOfVictory), 1,
                             joueur.colorUI)
+
                         self.window.blit(label, (int(self._width / 2 - 35), 10))
                         print("Le joueur " + joueur.name + " a gagné!")
+
                         gameOver = True
+
                     else:
+
                         gameOver = True
                         for i in range(self.board.size[1]):
                             if not self.board.fullColumn(i):
                                 gameOver = False
+
                         if joueur == self.joueurA:
                             joueur = self.joueurB
                         else:
