@@ -116,7 +116,7 @@ class Jeu :
 
                         O_position = (ligne,colonne)
                         liste_O.append(O_position)
-                        
+
         # condition de victoire pour X
             if len(liste_X) >= 3:
                 for (ligne,colonne) in liste_X:

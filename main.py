@@ -3,7 +3,7 @@ pygame.init()
 from game import game
 
 #initialisation de la fenêtre de jeu
-pygame.display.set_caption("Python Parthy")
+pygame.display.set_caption("Python Party")
 screen = pygame.display.set_mode((600,  600))
 background = pygame.image.load('écran_accueil_ebauche.png')
 
