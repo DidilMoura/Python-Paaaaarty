@@ -11,7 +11,6 @@ class Game:
     def __init__(self):
         self.screen = pygame.display.set_mode((600, 600))
         pygame.display.set_caption('Question pour un Python')
-        background = pygame.image.load('qpup.jpg')
         self.in_game = True
 
     def game_loop(self):
