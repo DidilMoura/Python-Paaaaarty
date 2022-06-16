@@ -84,6 +84,7 @@ def coin_flip_game():
         if result == 0:
             screen.fill((255, 255, 255))
             screen.blit(heads_coin, (300, 500))
+            pygame.time.wait(3000)
             pygame.display.flip()
         elif result == 1:
             screen.fill((255, 255, 255))

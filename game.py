@@ -6,15 +6,20 @@ from coin_flip import coin_flip_game
 
 
 def game():
-
-    #définition fenêtre de jeu
-    pygame.display.set_caption("Python Parthy")
-    screen_game = pygame.display.set_mode((600,  600))
-    background_game = pygame.image.load('plateau_python_party.png')
-    background_game = pygame.transform.scale(background_game, (600, 600))
-    screen_game.blit(background_game, (0, 0))
+    """
+Principal function of the project. It launches the game, manage player turn and location, launches the other game and
+manage the game board with player movements.
+    :return: nothing
+    """
+    # game window
+    pygame.display.set_caption("Python Party")  # name of the window
+    screen_game = pygame.display.set_mode((600,  600))  # size of the window
+    background_game = pygame.image.load('plateau_python_party.png')  # import board game on the window
+    background_game = pygame.transform.scale(background_game, (600, 600))  # resie the picture
+    screen_game.blit(background_game, (0, 0))  # update the window with the picture inside
     pygame.display.flip()
 
+    # dictionary which allow us to transfer and save important data
     data = {
         'player_1_pos': 0,
         'player_2_pos': 0,
@@ -22,25 +27,28 @@ def game():
         'player_2_turn': 0,
     }
 
+    # try to open the file with data
     try:
         with open('players_pos.txt') as score_file:
             data = json.load(score_file)
     except:
-        print('No file created yet')
+        print('No file created yet')  # if there is no file created yet
 
-
-    #Variable
-    score = 0
-    pion_1 = pygame.image.load('caracteres_1.png')
+    # variable
+    score = 0  # for loop function
+    pion_1 = pygame.image.load('caracteres_1.png')  # pawn for player 1
     pion_1 = pygame.transform.scale(pion_1, (40, 40))
-    pion_2 = pygame.image.load('caracteres_2.png')
+    pion_2 = pygame.image.load('caracteres_2.png')  # pawn for player 2
     pion_2 = pygame.transform.scale(pion_2, (40, 40))
-    coin_flip_rules = pygame.image.load('coin_flip_rule.png')
-    clicker_rule = pygame.image.load ('clicker_rule.png')
-
-
+    coin_flip_rules = pygame.image.load('coin_flip_rule.png')  # picture of coinflip game rule
+    clicker_rule = pygame.image.load ('clicker_rule.png')  # picture of clicker game rule
 
     def roll_dice(x):
+        """
+The function makes a little animation for the dice rolling then show the result and send back the result.
+        :param x: variable to allocate
+        :return: a random corresponding to the result of the dice rolling allocate to x
+        """
         color = (170, 170, 170)
         roll_button = pygame.draw.rect(screen_game, color, pygame.Rect(250, 400, 50, 30))
         small_font = pygame.font.SysFont('Corbel', 35)
@@ -48,19 +56,19 @@ def game():
         screen_game.blit(text, (250, 400))
         pygame.display.flip()
 
-        boucle = True
+        loop = True
 
-        while boucle:
+        while loop:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
-                    boucle = False
+                    loop = False
                     pygame.quit()
                 elif event.type == pygame.MOUSEBUTTONDOWN:
                     if roll_button.collidepoint(event.pos):
                         counter = 0
-                        while counter < 10:
+                        while counter < 10:  # loop which show a random face of the dice to simulate a die rolling
                             number = random.randint(1, 6)
-                            if number == 1:
+                            if number == 1:  # if the result is 1 it loads the face number 1, same for 2...
                                 dice_rolled = pygame.image.load('dé_1.jpg')
                                 screen_game.blit(dice_rolled, (300, 375))
                             elif number == 2:
@@ -81,7 +89,7 @@ def game():
                             counter = counter + 1
                             pygame.display.flip()
 
-                        if number == 1:
+                        if number == 1:  # loop to show the final result
                             dice_rolled = pygame.image.load('dé_1.jpg')
                             screen_game.blit(dice_rolled, (300, 375))
                         elif number == 2:
@@ -100,11 +108,15 @@ def game():
                             dice_rolled = pygame.image.load('dé_6.jpg')
                             screen_game.blit(dice_rolled, (300, 375))
                         pygame.display.flip()
-                        boucle = False
+                        loop = False
         x = number
         return x
 
     def dice_result(number):
+        """
+Show the result of die rolling. Allow us to reload the screen and still having the result on the window
+        :param number: insert the result of the roll_dice function
+        """
         if number == 1:
             dice_rolled = pygame.image.load('dé_1.jpg')
             screen_game.blit(dice_rolled, (300, 375))
@@ -126,7 +138,13 @@ def game():
         pygame.display.flip()
 
     def player_1_before_movements(x):
+        """
+Reload the window with board game and pawn 2 before pawn 1 movement to not have multiple pawn appearing on the window.
+        :param x: current location of pawn 2
+        """
         screen_game.blit(background_game, (0, 0))
+
+        # detect the pawn location on screen and put it correctly
         if x == 0:
             screen_game.blit(pion_2, (60, 128))
         elif x == 1:
@@ -183,6 +201,10 @@ def game():
             screen_game.blit(pion_2, (505, 485))
 
     def player_1_location(x):
+        """
+Put the pawn 1 correctly on the screen.
+        :param x: current location of pawn 1
+        """
         if x == 0:
             screen_game.blit(pion_1, (60, 128))
         elif x == 1:
@@ -239,6 +261,10 @@ def game():
             screen_game.blit(pion_1, (505, 485))
 
     def player_2_location(x):
+        """
+Put correctly the pawn 2 on screen
+        :param x: current location of pawn 2
+        """
         if x == 0:
             screen_game.blit(pion_2, (60, 128))
         elif x == 1:
@@ -295,6 +321,10 @@ def game():
             screen_game.blit(pion_2, (505, 485))
 
     def player_2_before_movements(x):
+        """
+Same utility than the function player_1_before_movement but this is for the pawn 2
+        :param x: current location of pawn 2
+        """
         screen_game.blit(background_game, (0, 0))
         if x == 0:
             screen_game.blit(pion_1, (60, 128))
@@ -352,19 +382,23 @@ def game():
             screen_game.blit(pion_1, (505, 485))
 
     def action_player_1(x):
+        """
+Detect the current location of the pawn 1 and apply case effect
+        :param x: current location of pawn 1
+        """
         if x == 1:
-            bonus = random.randint(0, 1)
+            bonus = random.randint(0, 1)  # generate the number of case you can move forward
             data['player_1_pos'] += bonus
         elif x == 2:
-            with open('players_pos.txt', 'w') as score_file:
+            with open('players_pos.txt', 'w') as score_file: # save our data in a file to reload it when we launch the game
                 json.dump(data, score_file)
-            screen_game.blit(clicker_rule, (0, 0))
+            screen_game.blit(clicker_rule, (0, 0))  # show the rule of the clicker game
             pygame.display.flip()
-            pygame.time.delay(5000)
+            pygame.time.delay(5000)  # delay before the launching of the game to have time to read rule
             pygame.display.quit()
             clicker_game()
         elif x == 3:
-            malus = random.randint(1, 2)
+            malus = random.randint(1, 2)  # generate the number of case you can go back
             data['player_1_pos'] -= malus
         elif x == 4:
             bonus = random.randint(1, 3)
@@ -372,7 +406,7 @@ def game():
         elif x == 6:
             with open('players_pos.txt', 'w') as score_file:
                 json.dump(data, score_file)
-            screen_game.blit(coin_flip_rules, (0, 0))
+            screen_game.blit(coin_flip_rules, (0, 0))  # show rule of the coinflip game before launching it
             pygame.display.flip()
             pygame.time.delay(5000)
             pygame.display.quit()
@@ -576,58 +610,66 @@ def game():
             pygame.display.quit()
             clicker_game()
 
-
-
-
+    # condition for the game to continue
 
     while data['player_1_pos'] <= 25 and data['player_2_pos'] <= 25:
 
-        #initialise les positions de départs des pions
+        # initialize pawn's start locations
         player_1_location(data['player_1_pos'])
         player_2_location(data['player_2_pos'])
 
+        # turn of player 1 if the condition is true
+
         if data['player_1_turn'] == data['player_2_turn']:
 
-            #lancé de dé et déplacement du joueur 1
-            result_1 = roll_dice(score)
-            data['player_1_pos'] += result_1
-            player_1_before_movements(data['player_2_pos'])
-            dice_result(result_1)
-            player_1_location(data['player_1_pos'])
+            # roll die and player 1 movement
+            result_1 = roll_dice(score)  # allocate result of the roll to a variable
+            data['player_1_pos'] += result_1  # add the result to the player location to be able to move it
 
-            #bonus/malus ou mini-jeu joueur 1
-            action_player_1(data['player_1_pos'])
-            player_1_before_movements(data['player_2_pos'])
-            dice_result(result_1)
-            player_1_location(data['player_1_pos'])
+            # calling the next functions to dont have multiple pawn 1 on window
 
-            #compteur de tour du joueur 1
+            player_1_before_movements(data['player_2_pos'])  # call the function
+            dice_result(result_1)  # call the function
+            player_1_location(data['player_1_pos'])  # pawn 1 location
+
+            # player 1 turn counter
             data['player_1_turn'] += 1
 
+            # bonus/malus or game for player 1
+            action_player_1(data['player_1_pos'])
+
+            # call these function to move pawn 1 without getting multiple pawn 1 if we get a bonus/malus case
+            player_1_before_movements(data['player_2_pos'])
+            dice_result(result_1)
+            player_1_location(data['player_1_pos'])
+
+        # turn of player 2 if the condition is true
+
         elif data['player_1_turn'] > data['player_2_turn']:
-            # lancé de dé et déplacement du joueur 2
+
+            # roll dice and player 2 movement
             result_2 = roll_dice(score)
             data['player_2_pos'] += result_2
             player_2_before_movements(data['player_1_pos'])
             dice_result(result_2)
             player_2_location(data['player_2_pos'])
 
-            # bonus/malus ou mini-jeu joueur 2
+            # turn counter player 2
+            data['player_2_turn'] += 1
+
+            # bonus/malus or game player 2
             action_player_1(data['player_2_pos'])
             player_2_before_movements(data['player_1_pos'])
             dice_result(result_2)
             player_2_location(data['player_2_pos'])
-            data['player_2_pos'] += 0
 
-            #compteur de tour du joueur 2
-            data['player_2_turn'] += 1
-
+    # player 1 winner if condition is true
     if data['player_1_pos'] > 25:
-        win_screen = pygame.image.load ('caracteres_1_win.png')
+        win_screen = pygame.image.load ('caracteres_1_win.png')  # show victory screen for player 1
         screen_game.blit(win_screen, (0, 0))
         pygame.display.flip()
     else:
-        win_screen = pygame.image.load('caracteres_2_win.png')
+        win_screen = pygame.image.load('caracteres_2_win.png') # show victory screen for player 2
         screen_game.blit(win_screen, (0, 0))
         pygame.display.flip()
         pygame.display.flip()
