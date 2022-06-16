@@ -16,8 +16,10 @@ def game():
     pygame.display.flip()
 
     data = {
-        'player_1_pos' : 0,
-        'player_2_pos' : 0
+        'player_1_pos': 0,
+        'player_2_pos': 0,
+        'player_1_turn': 0,
+        'player_2_turn': 0,
     }
 
     try:
@@ -26,6 +28,7 @@ def game():
     except:
         print('No file created yet')
 
+
     #Variable
     score = 0
     pion_1 = pygame.image.load('caracteres_1.png')
@@ -33,6 +36,7 @@ def game():
     pion_2 = pygame.image.load('caracteres_2.png')
     pion_2 = pygame.transform.scale(pion_2, (40, 40))
     coin_flip_rules = pygame.image.load('coin_flip_rule.png')
+    clicker_rule = pygame.image.load ('clicker_rule.png')
 
 
 
@@ -292,7 +296,6 @@ def game():
 
     def player_2_before_movements(x):
         screen_game.blit(background_game, (0, 0))
-
         if x == 0:
             screen_game.blit(pion_1, (60, 128))
         elif x == 1:
@@ -355,6 +358,9 @@ def game():
         elif x == 2:
             with open('players_pos.txt', 'w') as score_file:
                 json.dump(data, score_file)
+            screen_game.blit(clicker_rule, (0, 0))
+            pygame.display.flip()
+            pygame.time.delay(5000)
             pygame.display.quit()
             clicker_game()
         elif x == 3:
@@ -385,6 +391,9 @@ def game():
         elif x == 11:
             with open('players_pos.txt', 'w') as score_file:
                 json.dump(data, score_file)
+            screen_game.blit(clicker_rule, (0, 0))
+            pygame.display.flip()
+            pygame.time.delay(5000)
             pygame.display.quit()
             clicker_game()
         elif x == 12:
@@ -401,6 +410,9 @@ def game():
         elif x == 15:
             with open('players_pos.txt', 'w') as score_file:
                 json.dump(data, score_file)
+            screen_game.blit(clicker_rule, (0, 0))
+            pygame.display.flip()
+            pygame.time.delay(5000)
             pygame.display.quit()
             clicker_game()
         elif x == 16:
@@ -417,6 +429,9 @@ def game():
         elif x == 18:
             with open('players_pos.txt', 'w') as score_file:
                 json.dump(data, score_file)
+            screen_game.blit(clicker_rule, (0, 0))
+            pygame.display.flip()
+            pygame.time.delay(5000)
             pygame.display.quit()
             clicker_game()
         elif x == 19:
@@ -442,6 +457,9 @@ def game():
         elif x == 25:
             with open('players_pos.txt', 'w') as score_file:
                 json.dump(data, score_file)
+            screen_game.blit(clicker_rule, (0, 0))
+            pygame.display.flip()
+            pygame.time.delay(5000)
             pygame.display.quit()
             clicker_game()
 
@@ -453,6 +471,9 @@ def game():
         elif x == 2:
             with open('players_pos.txt', 'w') as score_file:
                 json.dump(data, score_file)
+            screen_game.blit(clicker_rule, (0, 0))
+            pygame.display.flip()
+            pygame.time.delay(5000)
             pygame.display.quit()
             clicker_game()
         elif x == 3:
@@ -483,6 +504,9 @@ def game():
         elif x == 11:
             with open('players_pos.txt', 'w') as score_file:
                 json.dump(data, score_file)
+            screen_game.blit(clicker_rule, (0, 0))
+            pygame.display.flip()
+            pygame.time.delay(5000)
             pygame.display.quit()
             clicker_game()
         elif x == 12:
@@ -499,6 +523,9 @@ def game():
         elif x == 15:
             with open('players_pos.txt', 'w') as score_file:
                 json.dump(data, score_file)
+            screen_game.blit(clicker_rule, (0, 0))
+            pygame.display.flip()
+            pygame.time.delay(5000)
             pygame.display.quit()
             clicker_game()
         elif x == 16:
@@ -515,6 +542,9 @@ def game():
         elif x == 18:
             with open('players_pos.txt', 'w') as score_file:
                 json.dump(data, score_file)
+            screen_game.blit(clicker_rule, (0, 0))
+            pygame.display.flip()
+            pygame.time.delay(5000)
             pygame.display.quit()
             clicker_game()
         elif x == 19:
@@ -540,6 +570,9 @@ def game():
         elif x == 25:
             with open('players_pos.txt', 'w') as score_file:
                 json.dump(data, score_file)
+            screen_game.blit(clicker_rule, (0, 0))
+            pygame.display.flip()
+            pygame.time.delay(5000)
             pygame.display.quit()
             clicker_game()
 
@@ -548,41 +581,46 @@ def game():
 
 
     while data['player_1_pos'] <= 25 and data['player_2_pos'] <= 25:
+
         #initialise les positions de départs des pions
         player_1_location(data['player_1_pos'])
         player_2_location(data['player_2_pos'])
 
-        #lancé de dé et déplacement du joueur 1
-        result_1 = roll_dice(score)
-        data['player_1_pos'] += result_1
-        player_1_before_movements(data['player_2_pos'])
-        dice_result(result_1)
-        player_1_location(data['player_1_pos'])
+        if data['player_1_turn'] == data['player_2_turn']:
 
-        #bonus/malus ou mini-jeu joueur 1
-        action_player_1(data['player_1_pos'])
-        player_1_before_movements(data['player_2_pos'])
-        dice_result(result_1)
-        player_1_location(data['player_1_pos'])
+            #lancé de dé et déplacement du joueur 1
+            result_1 = roll_dice(score)
+            data['player_1_pos'] += result_1
+            player_1_before_movements(data['player_2_pos'])
+            dice_result(result_1)
+            player_1_location(data['player_1_pos'])
 
-        #lancé de dé et déplacement du joueur 2
-        result_2 = roll_dice(score)
-        data['player_2_pos'] += result_2
-        player_2_before_movements(data['player_1_pos'])
-        dice_result(result_2)
-        player_2_location(data['player_2_pos'])
+            #bonus/malus ou mini-jeu joueur 1
+            action_player_1(data['player_1_pos'])
+            player_1_before_movements(data['player_2_pos'])
+            dice_result(result_1)
+            player_1_location(data['player_1_pos'])
 
-        # bonus/malus ou mini-jeu joueur 2
-        action_player_1(data['player_2_pos'])
-        player_2_before_movements(data['player_1_pos'])
-        dice_result(result_2)
-        player_2_location(data['player_2_pos'])
-        data['player_2_pos'] += 0
+            #compteur de tour du joueur 1
+            data['player_1_turn'] += 1
 
+        elif data['player_1_turn'] > data['player_2_turn']:
+            # lancé de dé et déplacement du joueur 2
+            result_2 = roll_dice(score)
+            data['player_2_pos'] += result_2
+            player_2_before_movements(data['player_1_pos'])
+            dice_result(result_2)
+            player_2_location(data['player_2_pos'])
 
+            # bonus/malus ou mini-jeu joueur 2
+            action_player_1(data['player_2_pos'])
+            player_2_before_movements(data['player_1_pos'])
+            dice_result(result_2)
+            player_2_location(data['player_2_pos'])
+            data['player_2_pos'] += 0
 
-
-
+            #compteur de tour du joueur 2
+            data['player_2_turn'] += 1
 
     if data['player_1_pos'] > 25:
         win_screen = pygame.image.load ('caracteres_1_win.png')
