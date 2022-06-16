@@ -15,7 +15,7 @@ def clicker_game():
     except:
         print('No file created yet')
 
-    color = (170, 170, 170)
+
     small_font = pygame.font.SysFont('Corbel', 35)
     player_1 = small_font.render('player_1', True, (0, 0, 0))
     screen.blit(player_1, (50, 50))
