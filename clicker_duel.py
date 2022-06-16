@@ -55,7 +55,7 @@ def clicker_game():
     else:
         win_text_2 = small_font.render('Player 1 won', True, (0, 0, 0))
         screen.blit(win_text_2, (200, 300))
-        number_2 = random.randit(1,3)
+        number_2 = random.randint(1, 3)
         data['player_1_pos'] += number_2
     pygame.display.flip()
 

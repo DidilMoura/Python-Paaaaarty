@@ -32,6 +32,7 @@ def game():
     pion_1 = pygame.transform.scale(pion_1, (40, 40))
     pion_2 = pygame.image.load('caracteres_2.png')
     pion_2 = pygame.transform.scale(pion_2, (40, 40))
+    coin_flip_rules = pygame.image.load('coin_flip_rule.png')
 
 
 
@@ -365,6 +366,9 @@ def game():
         elif x == 6:
             with open('players_pos.txt', 'w') as score_file:
                 json.dump(data, score_file)
+            screen_game.blit(coin_flip_rules, (0, 0))
+            pygame.display.flip()
+            pygame.time.delay(5000)
             pygame.display.quit()
             coin_flip_game()
         elif x == 7:
@@ -373,6 +377,9 @@ def game():
         elif x == 9:
             with open('players_pos.txt', 'w') as score_file:
                 json.dump(data, score_file)
+            screen_game.blit(coin_flip_rules, (0, 0))
+            pygame.display.flip()
+            pygame.time.delay(5000)
             pygame.display.quit()
             coin_flip_game()
         elif x == 11:
@@ -383,6 +390,9 @@ def game():
         elif x == 12:
             with open('players_pos.txt', 'w') as score_file:
                 json.dump(data, score_file)
+            screen_game.blit(coin_flip_rules, (0, 0))
+            pygame.display.flip()
+            pygame.time.delay(5000)
             pygame.display.quit()
             coin_flip_game()
         elif x == 13:
@@ -399,6 +409,9 @@ def game():
         elif x == 17:
             with open('players_pos.txt', 'w') as score_file:
                 json.dump(data, score_file)
+            screen_game.blit(coin_flip_rules, (0, 0))
+            pygame.display.flip()
+            pygame.time.delay(5000)
             pygame.display.quit()
             coin_flip_game()
         elif x == 18:
@@ -415,6 +428,9 @@ def game():
         elif x == 22:
             with open('players_pos.txt', 'w') as score_file:
                 json.dump(data, score_file)
+            screen_game.blit(coin_flip_rules, (0, 0))
+            pygame.display.flip()
+            pygame.time.delay(5000)
             pygame.display.quit()
             coin_flip_game()
         elif x == 23:
@@ -445,14 +461,38 @@ def game():
         elif x == 4:
             bonus = random.randint(1, 3)
             data['player_2_pos'] += bonus
+        elif x == 6:
+            with open('players_pos.txt', 'w') as score_file:
+                json.dump(data, score_file)
+            screen_game.blit(coin_flip_rules, (0, 0))
+            pygame.display.flip()
+            pygame.time.delay(5000)
+            pygame.display.quit()
+            coin_flip_game()
         elif x == 7:
             bonus = random.randint(1, 3)
             data['player_2_pos'] += bonus
+        elif x == 9:
+            with open('players_pos.txt', 'w') as score_file:
+                json.dump(data, score_file)
+            screen_game.blit(coin_flip_rules, (0, 0))
+            pygame.display.flip()
+            pygame.time.delay(5000)
+            pygame.display.quit()
+            coin_flip_game()
         elif x == 11:
             with open('players_pos.txt', 'w') as score_file:
                 json.dump(data, score_file)
             pygame.display.quit()
             clicker_game()
+        elif x == 12:
+            with open('players_pos.txt', 'w') as score_file:
+                json.dump(data, score_file)
+            screen_game.blit(coin_flip_rules, (0, 0))
+            pygame.display.flip()
+            pygame.time.delay(5000)
+            pygame.display.quit()
+            coin_flip_game()
         elif x == 13:
             bonus = random.randint(0, 1)
             data['player_2_pos'] += bonus
@@ -464,6 +504,14 @@ def game():
         elif x == 16:
             malus = random.randint(1, 3)
             data['player_2_pos'] -= malus
+        elif x == 17:
+            with open('players_pos.txt', 'w') as score_file:
+                json.dump(data, score_file)
+            screen_game.blit(coin_flip_rules, (0, 0))
+            pygame.display.flip()
+            pygame.time.delay(5000)
+            pygame.display.quit()
+            coin_flip_game()
         elif x == 18:
             with open('players_pos.txt', 'w') as score_file:
                 json.dump(data, score_file)
@@ -475,6 +523,14 @@ def game():
         elif x == 21:
             bonus = random.randint(0, 1)
             data['player_2_pos'] += bonus
+        elif x == 22:
+            with open('players_pos.txt', 'w') as score_file:
+                json.dump(data, score_file)
+            screen_game.blit(coin_flip_rules, (0, 0))
+            pygame.display.flip()
+            pygame.time.delay(5000)
+            pygame.display.quit()
+            coin_flip_game()
         elif x == 23:
             malus = random.randint(1, 3)
             data['player_2_pos'] -= malus
@@ -545,3 +601,4 @@ def game():
             if event.type == pygame.QUIT:
                 boucle = False
                 pygame.quit()
+        pygame.display.flip()
