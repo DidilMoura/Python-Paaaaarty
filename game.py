@@ -354,10 +354,13 @@ def game():
                 json.dump(data, score_file)
             pygame.display.quit()
             clicker_game()
-        if x == 4:
+        elif x == 3:
+            malus = random.randint(1, 2)
+            data['player_1_pos'] -= malus
+        elif x == 4:
             bonus = random.randint(1, 3)
             data['player_1_pos'] += bonus
-        if x == 7:
+        elif x == 7:
             bonus = random.randint(1, 3)
             data['player_1_pos'] += bonus
         elif x == 11:
@@ -365,22 +368,34 @@ def game():
                 json.dump(data, score_file)
             pygame.display.quit()
             clicker_game()
-        if x == 13:
-            bonus = random.randint(0, 1)
+        elif x == 13:
+            bonus = random.randint(1, 3)
             data['player_1_pos'] += bonus
         elif x == 15:
             with open('players_pos.txt', 'w') as score_file:
                 json.dump(data, score_file)
             pygame.display.quit()
             clicker_game()
+        elif x == 16:
+            malus = random.randint(1, 3)
+            data['player_1_pos'] -= malus
         elif x == 18:
             with open('players_pos.txt', 'w') as score_file:
                 json.dump(data, score_file)
             pygame.display.quit()
             clicker_game()
-        if x == 21:
-            bonus = random.randint(0, 1)
+        elif x == 19:
+            malus = random.randint(1, 3)
+            data['player_1_pos'] -= malus
+        elif x == 21:
+            bonus = random.randint(1, 1)
             data['player_1_pos'] += bonus
+        elif x == 23:
+            malus = random.randint(1, 3)
+            data['player_1_pos'] -= malus
+        elif x == 24:
+            malus = random.randint(1, 3)
+            data['player_1_pos'] -= malus
         elif x == 25:
             with open('players_pos.txt', 'w') as score_file:
                 json.dump(data, score_file)
@@ -397,10 +412,13 @@ def game():
                 json.dump(data, score_file)
             pygame.display.quit()
             clicker_game()
-        if x == 4:
+        elif x == 3:
+            malus = random.randint(1, 2)
+            data['player_2_pos'] -= malus
+        elif x == 4:
             bonus = random.randint(1, 3)
             data['player_2_pos'] += bonus
-        if x == 7:
+        elif x == 7:
             bonus = random.randint(1, 3)
             data['player_2_pos'] += bonus
         elif x == 11:
@@ -408,7 +426,7 @@ def game():
                 json.dump(data, score_file)
             pygame.display.quit()
             clicker_game()
-        if x == 13:
+        elif x == 13:
             bonus = random.randint(0, 1)
             data['player_2_pos'] += bonus
         elif x == 15:
@@ -416,14 +434,26 @@ def game():
                 json.dump(data, score_file)
             pygame.display.quit()
             clicker_game()
+        elif x == 16:
+            malus = random.randint(1, 3)
+            data['player_2_pos'] -= malus
         elif x == 18:
             with open('players_pos.txt', 'w') as score_file:
                 json.dump(data, score_file)
             pygame.display.quit()
             clicker_game()
-        if x == 21:
+        elif x == 19:
+            malus = random.randint(1, 3)
+            data['player_2_pos'] -= malus
+        elif x == 21:
             bonus = random.randint(0, 1)
             data['player_2_pos'] += bonus
+        elif x == 23:
+            malus = random.randint(1, 3)
+            data['player_2_pos'] -= malus
+        elif x == 24:
+            malus = random.randint(1, 3)
+            data['player_2_pos'] -= malus
         elif x == 25:
             with open('players_pos.txt', 'w') as score_file:
                 json.dump(data, score_file)
