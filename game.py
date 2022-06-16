@@ -43,10 +43,10 @@ manage the game board with player movements.
     coin_flip_rules = pygame.image.load('coin_flip_rule.png')  # picture of coinflip game rule
     clicker_rule = pygame.image.load ('clicker_rule.png')  # picture of clicker game rule
 
-    def roll_dice(x):
+    def roll_dice(result):
         """
 The function makes a little animation for the dice rolling then show the result and send back the result.
-        :param x: variable to allocate
+        :param result: result of die roll
         :return: a random corresponding to the result of the dice rolling allocate to x
         """
         color = (170, 170, 170)
@@ -109,27 +109,27 @@ The function makes a little animation for the dice rolling then show the result 
                             screen_game.blit(dice_rolled, (300, 375))
                         pygame.display.flip()
                         loop = False
-        x = number
-        return x
+        result = number
+        return result
 
-    def dice_result(number):
+    def dice_result(result_roll_dice):
         """
 Show the result of die rolling. Allow us to reload the screen and still having the result on the window
-        :param number: insert the result of the roll_dice function
+        :param result_roll_dice: insert the result of the roll_dice function
         """
-        if number == 1:
+        if result_roll_dice == 1:
             dice_rolled = pygame.image.load('dé_1.jpg')
             screen_game.blit(dice_rolled, (300, 375))
-        elif number == 2:
+        elif result_roll_dice == 2:
             dice_rolled = pygame.image.load('dé_2.jpg')
             screen_game.blit(dice_rolled, (300, 375))
-        elif number == 3:
+        elif result_roll_dice == 3:
             dice_rolled = pygame.image.load('dé_3.jpg')
             screen_game.blit(dice_rolled, (300, 375))
-        elif number == 4:
+        elif result_roll_dice == 4:
             dice_rolled = pygame.image.load('dé_4.jpg')
             screen_game.blit(dice_rolled, (300, 375))
-        elif number == 5:
+        elif result_roll_dice == 5:
             dice_rolled = pygame.image.load('dé_5.jpg')
             screen_game.blit(dice_rolled, (300, 375))
         else:
@@ -137,259 +137,259 @@ Show the result of die rolling. Allow us to reload the screen and still having t
             screen_game.blit(dice_rolled, (300, 375))
         pygame.display.flip()
 
-    def player_1_before_movements(x):
+    def player_1_before_movements(player2_loc):
         """
 Reload the window with board game and pawn 2 before pawn 1 movement to not have multiple pawn appearing on the window.
-        :param x: current location of pawn 2
+        :param player2_loc: current location of pawn 2
         """
         screen_game.blit(background_game, (0, 0))
 
         # detect the pawn location on screen and put it correctly
-        if x == 0:
+        if player2_loc == 0:
             screen_game.blit(pion_2, (60, 128))
-        elif x == 1:
+        elif player2_loc == 1:
             screen_game.blit(pion_2, (190, 128))
-        elif x == 2:
+        elif player2_loc == 2:
             screen_game.blit(pion_2, (250, 128))
-        elif x == 3:
+        elif player2_loc == 3:
             screen_game.blit(pion_2, (310, 128))
-        elif x == 4:
+        elif player2_loc == 4:
             screen_game.blit(pion_2, (370, 128))
-        elif x == 5:
+        elif player2_loc == 5:
             screen_game.blit(pion_2, (430, 128))
-        elif x == 6:
+        elif player2_loc == 6:
             screen_game.blit(pion_2, (460, 160))
-        elif x == 7:
+        elif player2_loc == 7:
             screen_game.blit(pion_2, (460, 220))
-        elif x == 8:
+        elif player2_loc == 8:
             screen_game.blit(pion_2, (430, 245))
-        elif x == 9:
+        elif player2_loc == 9:
             screen_game.blit(pion_2, (370, 245))
-        elif x == 10:
+        elif player2_loc == 10:
             screen_game.blit(pion_2, (310, 245))
-        elif x == 11:
+        elif player2_loc == 11:
             screen_game.blit(pion_2, (250, 245))
-        elif x == 12:
+        elif player2_loc == 12:
             screen_game.blit(pion_2, (190, 245))
-        elif x == 13:
+        elif player2_loc == 13:
             screen_game.blit(pion_2, (130, 245))
-        elif x == 14:
+        elif player2_loc == 14:
             screen_game.blit(pion_2, (70, 245))
-        elif x == 15:
+        elif player2_loc == 15:
             screen_game.blit(pion_2, (70, 305))
-        elif x == 16:
+        elif player2_loc == 16:
             screen_game.blit(pion_2, (70, 365))
-        elif x == 17:
+        elif player2_loc == 17:
             screen_game.blit(pion_2, (70, 425))
-        elif x == 18:
+        elif player2_loc == 18:
             screen_game.blit(pion_2, (70, 485))
-        elif x == 19:
+        elif player2_loc == 19:
             screen_game.blit(pion_2, (130, 485))
-        elif x == 20:
+        elif player2_loc == 20:
             screen_game.blit(pion_2, (190, 485))
-        elif x == 21:
+        elif player2_loc == 21:
             screen_game.blit(pion_2, (250, 515))
-        elif x == 22:
+        elif player2_loc == 22:
             screen_game.blit(pion_2, (310, 515))
-        elif x == 23:
+        elif player2_loc == 23:
             screen_game.blit(pion_2, (370, 515))
-        elif x == 24:
+        elif player2_loc == 24:
             screen_game.blit(pion_2, (430, 515))
-        elif x == 25:
+        elif player2_loc == 25:
             screen_game.blit(pion_2, (490, 515))
-        elif x > 25:
+        elif player2_loc > 25:
             screen_game.blit(pion_2, (505, 485))
 
-    def player_1_location(x):
+    def player_1_location(player1_loc):
         """
 Put the pawn 1 correctly on the screen.
-        :param x: current location of pawn 1
+        :param player1_loc: current location of pawn 1
         """
-        if x == 0:
+        if player1_loc == 0:
             screen_game.blit(pion_1, (60, 128))
-        elif x == 1:
+        elif player1_loc == 1:
             screen_game.blit(pion_1, (190, 128))
-        elif x == 2:
+        elif player1_loc == 2:
             screen_game.blit(pion_1, (250, 128))
-        elif x == 3:
+        elif player1_loc == 3:
             screen_game.blit(pion_1, (310, 128))
-        elif x == 4:
+        elif player1_loc == 4:
             screen_game.blit(pion_1, (370, 128))
-        elif x == 5:
+        elif player1_loc == 5:
             screen_game.blit(pion_1, (430, 128))
-        elif x == 6:
+        elif player1_loc == 6:
             screen_game.blit(pion_1, (460, 160))
-        elif x == 7:
+        elif player1_loc == 7:
             screen_game.blit(pion_1, (460, 220))
-        elif x == 8:
+        elif player1_loc == 8:
             screen_game.blit(pion_1, (430, 245))
-        elif x == 9:
+        elif player1_loc == 9:
             screen_game.blit(pion_1, (370, 245))
-        elif x == 10:
+        elif player1_loc == 10:
             screen_game.blit(pion_1, (310, 245))
-        elif x == 11:
+        elif player1_loc == 11:
             screen_game.blit(pion_1, (250, 245))
-        elif x == 12:
+        elif player1_loc == 12:
             screen_game.blit(pion_1, (190, 245))
-        elif x == 13:
+        elif player1_loc == 13:
             screen_game.blit(pion_1, (130, 245))
-        elif x == 14:
+        elif player1_loc == 14:
             screen_game.blit(pion_1, (70, 245))
-        elif x == 15:
+        elif player1_loc == 15:
             screen_game.blit(pion_1, (70, 305))
-        elif x == 16:
+        elif player1_loc == 16:
             screen_game.blit(pion_1, (70, 365))
-        elif x == 17:
+        elif player1_loc == 17:
             screen_game.blit(pion_1, (70, 425))
-        elif x == 18:
+        elif player1_loc == 18:
             screen_game.blit(pion_1, (70, 485))
-        elif x == 19:
+        elif player1_loc == 19:
             screen_game.blit(pion_1, (130, 485))
-        elif x == 20:
+        elif player1_loc == 20:
             screen_game.blit(pion_1, (190, 485))
-        elif x == 21:
+        elif player1_loc == 21:
             screen_game.blit(pion_1, (250, 515))
-        elif x == 22:
+        elif player1_loc == 22:
             screen_game.blit(pion_1, (310, 515))
-        elif x == 23:
+        elif player1_loc == 23:
             screen_game.blit(pion_1, (370, 515))
-        elif x == 24:
+        elif player1_loc == 24:
             screen_game.blit(pion_1, (430, 515))
-        elif x == 25:
+        elif player1_loc == 25:
             screen_game.blit(pion_1, (490, 515))
-        elif x > 25:
+        elif player1_loc > 25:
             screen_game.blit(pion_1, (505, 485))
 
-    def player_2_location(x):
+    def player_2_location(player2_loc):
         """
 Put correctly the pawn 2 on screen
-        :param x: current location of pawn 2
+        :param player2_loc: current location of pawn 2
         """
-        if x == 0:
+        if player2_loc == 0:
             screen_game.blit(pion_2, (60, 128))
-        elif x == 1:
+        elif player2_loc == 1:
             screen_game.blit(pion_2, (190, 128))
-        elif x == 2:
+        elif player2_loc == 2:
             screen_game.blit(pion_2, (250, 128))
-        elif x == 3:
+        elif player2_loc == 3:
             screen_game.blit(pion_2, (310, 128))
-        elif x == 4:
+        elif player2_loc == 4:
             screen_game.blit(pion_2, (370, 128))
-        elif x == 5:
+        elif player2_loc == 5:
             screen_game.blit(pion_2, (430, 128))
-        elif x == 6:
+        elif player2_loc == 6:
             screen_game.blit(pion_2, (460, 160))
-        elif x == 7:
+        elif player2_loc == 7:
             screen_game.blit(pion_2, (460, 220))
-        elif x == 8:
+        elif player2_loc == 8:
             screen_game.blit(pion_2, (430, 245))
-        elif x == 9:
+        elif player2_loc == 9:
             screen_game.blit(pion_2, (370, 245))
-        elif x == 10:
+        elif player2_loc == 10:
             screen_game.blit(pion_2, (310, 245))
-        elif x == 11:
+        elif player2_loc == 11:
             screen_game.blit(pion_2, (250, 245))
-        elif x == 12:
+        elif player2_loc == 12:
             screen_game.blit(pion_2, (190, 245))
-        elif x == 13:
+        elif player2_loc == 13:
             screen_game.blit(pion_2, (130, 245))
-        elif x == 14:
+        elif player2_loc == 14:
             screen_game.blit(pion_2, (70, 245))
-        elif x == 15:
+        elif player2_loc == 15:
             screen_game.blit(pion_2, (70, 305))
-        elif x == 16:
+        elif player2_loc == 16:
             screen_game.blit(pion_2, (70, 365))
-        elif x == 17:
+        elif player2_loc == 17:
             screen_game.blit(pion_2, (70, 425))
-        elif x == 18:
+        elif player2_loc == 18:
             screen_game.blit(pion_2, (70, 485))
-        elif x == 19:
+        elif player2_loc == 19:
             screen_game.blit(pion_2, (130, 485))
-        elif x == 20:
+        elif player2_loc == 20:
             screen_game.blit(pion_2, (190, 485))
-        elif x == 21:
+        elif player2_loc == 21:
             screen_game.blit(pion_2, (250, 515))
-        elif x == 22:
+        elif player2_loc == 22:
             screen_game.blit(pion_2, (310, 515))
-        elif x == 23:
+        elif player2_loc == 23:
             screen_game.blit(pion_2, (370, 515))
-        elif x == 24:
+        elif player2_loc == 24:
             screen_game.blit(pion_2, (430, 515))
-        elif x == 25:
+        elif player2_loc == 25:
             screen_game.blit(pion_2, (490, 515))
-        elif x > 25:
+        elif player2_loc > 25:
             screen_game.blit(pion_2, (505, 485))
 
-    def player_2_before_movements(x):
+    def player_2_before_movements(player1_loc):
         """
 Same utility than the function player_1_before_movement but this is for the pawn 2
-        :param x: current location of pawn 2
+        :param player1_loc: current location of pawn 1
         """
         screen_game.blit(background_game, (0, 0))
-        if x == 0:
+        if player1_loc == 0:
             screen_game.blit(pion_1, (60, 128))
-        elif x == 1:
+        elif player1_loc == 1:
             screen_game.blit(pion_1, (190, 128))
-        elif x == 2:
+        elif player1_loc == 2:
             screen_game.blit(pion_1, (250, 128))
-        elif x == 3:
+        elif player1_loc == 3:
             screen_game.blit(pion_1, (310, 128))
-        elif x == 4:
+        elif player1_loc == 4:
             screen_game.blit(pion_1, (370, 128))
-        elif x == 5:
+        elif player1_loc == 5:
             screen_game.blit(pion_1, (430, 128))
-        elif x == 6:
+        elif player1_loc == 6:
             screen_game.blit(pion_1, (460, 160))
-        elif x == 7:
+        elif player1_loc == 7:
             screen_game.blit(pion_1, (460, 220))
-        elif x == 8:
+        elif player1_loc == 8:
             screen_game.blit(pion_1, (430, 245))
-        elif x == 9:
+        elif player1_loc == 9:
             screen_game.blit(pion_1, (370, 245))
-        elif x == 10:
+        elif player1_loc == 10:
             screen_game.blit(pion_1, (310, 245))
-        elif x == 11:
+        elif player1_loc == 11:
             screen_game.blit(pion_1, (250, 245))
-        elif x == 12:
+        elif player1_loc == 12:
             screen_game.blit(pion_1, (190, 245))
-        elif x == 13:
+        elif player1_loc == 13:
             screen_game.blit(pion_1, (130, 245))
-        elif x == 14:
+        elif player1_loc == 14:
             screen_game.blit(pion_1, (70, 245))
-        elif x == 15:
+        elif player1_loc == 15:
             screen_game.blit(pion_1, (70, 305))
-        elif x == 16:
+        elif player1_loc == 16:
             screen_game.blit(pion_1, (70, 365))
-        elif x == 17:
+        elif player1_loc == 17:
             screen_game.blit(pion_1, (70, 425))
-        elif x == 18:
+        elif player1_loc == 18:
             screen_game.blit(pion_1, (70, 485))
-        elif x == 19:
+        elif player1_loc == 19:
             screen_game.blit(pion_1, (130, 485))
-        elif x == 20:
+        elif player1_loc == 20:
             screen_game.blit(pion_1, (190, 485))
-        elif x == 21:
+        elif player1_loc == 21:
             screen_game.blit(pion_1, (250, 515))
-        elif x == 22:
+        elif player1_loc == 22:
             screen_game.blit(pion_1, (310, 515))
-        elif x == 23:
+        elif player1_loc == 23:
             screen_game.blit(pion_1, (370, 515))
-        elif x == 24:
+        elif player1_loc == 24:
             screen_game.blit(pion_1, (430, 515))
-        elif x == 25:
+        elif player1_loc == 25:
             screen_game.blit(pion_1, (490, 515))
-        elif x > 25:
+        elif player1_loc > 25:
             screen_game.blit(pion_1, (505, 485))
 
-    def action_player_1(x):
+    def action_player_1(player1_loc):
         """
 Detect the current location of the pawn 1 and apply case effect
-        :param x: current location of pawn 1
+        :param player1_loc: current location of pawn 1
         """
-        if x == 1:
+        if player1_loc == 1:
             bonus = random.randint(0, 1)  # generate the number of case you can move forward
             data['player_1_pos'] += bonus
-        elif x == 2:
+        elif player1_loc == 2:
             with open('players_pos.txt', 'w') as score_file: # save our data in a file to reload it when we launch the game
                 json.dump(data, score_file)
             screen_game.blit(clicker_rule, (0, 0))  # show the rule of the clicker game
@@ -397,13 +397,13 @@ Detect the current location of the pawn 1 and apply case effect
             pygame.time.delay(5000)  # delay before the launching of the game to have time to read rule
             pygame.display.quit()
             clicker_game()
-        elif x == 3:
+        elif player1_loc == 3:
             malus = random.randint(1, 2)  # generate the number of case you can go back
             data['player_1_pos'] -= malus
-        elif x == 4:
+        elif player1_loc == 4:
             bonus = random.randint(1, 3)
             data['player_1_pos'] += bonus
-        elif x == 6:
+        elif player1_loc == 6:
             with open('players_pos.txt', 'w') as score_file:
                 json.dump(data, score_file)
             screen_game.blit(coin_flip_rules, (0, 0))  # show rule of the coinflip game before launching it
@@ -411,10 +411,10 @@ Detect the current location of the pawn 1 and apply case effect
             pygame.time.delay(5000)
             pygame.display.quit()
             coin_flip_game()
-        elif x == 7:
+        elif player1_loc == 7:
             bonus = random.randint(1, 3)
             data['player_1_pos'] += bonus
-        elif x == 9:
+        elif player1_loc == 9:
             with open('players_pos.txt', 'w') as score_file:
                 json.dump(data, score_file)
             screen_game.blit(coin_flip_rules, (0, 0))
@@ -422,7 +422,7 @@ Detect the current location of the pawn 1 and apply case effect
             pygame.time.delay(5000)
             pygame.display.quit()
             coin_flip_game()
-        elif x == 11:
+        elif player1_loc == 11:
             with open('players_pos.txt', 'w') as score_file:
                 json.dump(data, score_file)
             screen_game.blit(clicker_rule, (0, 0))
@@ -430,7 +430,7 @@ Detect the current location of the pawn 1 and apply case effect
             pygame.time.delay(5000)
             pygame.display.quit()
             clicker_game()
-        elif x == 12:
+        elif player1_loc == 12:
             with open('players_pos.txt', 'w') as score_file:
                 json.dump(data, score_file)
             screen_game.blit(coin_flip_rules, (0, 0))
@@ -438,10 +438,10 @@ Detect the current location of the pawn 1 and apply case effect
             pygame.time.delay(5000)
             pygame.display.quit()
             coin_flip_game()
-        elif x == 13:
+        elif player1_loc == 13:
             bonus = random.randint(1, 3)
             data['player_1_pos'] += bonus
-        elif x == 15:
+        elif player1_loc == 15:
             with open('players_pos.txt', 'w') as score_file:
                 json.dump(data, score_file)
             screen_game.blit(clicker_rule, (0, 0))
@@ -449,10 +449,10 @@ Detect the current location of the pawn 1 and apply case effect
             pygame.time.delay(5000)
             pygame.display.quit()
             clicker_game()
-        elif x == 16:
+        elif player1_loc == 16:
             malus = random.randint(1, 3)
             data['player_1_pos'] -= malus
-        elif x == 17:
+        elif player1_loc == 17:
             with open('players_pos.txt', 'w') as score_file:
                 json.dump(data, score_file)
             screen_game.blit(coin_flip_rules, (0, 0))
@@ -460,7 +460,7 @@ Detect the current location of the pawn 1 and apply case effect
             pygame.time.delay(5000)
             pygame.display.quit()
             coin_flip_game()
-        elif x == 18:
+        elif player1_loc == 18:
             with open('players_pos.txt', 'w') as score_file:
                 json.dump(data, score_file)
             screen_game.blit(clicker_rule, (0, 0))
@@ -468,13 +468,13 @@ Detect the current location of the pawn 1 and apply case effect
             pygame.time.delay(5000)
             pygame.display.quit()
             clicker_game()
-        elif x == 19:
+        elif player1_loc == 19:
             malus = random.randint(1, 3)
             data['player_1_pos'] -= malus
-        elif x == 21:
+        elif player1_loc == 21:
             bonus = random.randint(1, 1)
             data['player_1_pos'] += bonus
-        elif x == 22:
+        elif player1_loc == 22:
             with open('players_pos.txt', 'w') as score_file:
                 json.dump(data, score_file)
             screen_game.blit(coin_flip_rules, (0, 0))
@@ -482,13 +482,13 @@ Detect the current location of the pawn 1 and apply case effect
             pygame.time.delay(5000)
             pygame.display.quit()
             coin_flip_game()
-        elif x == 23:
+        elif player1_loc == 23:
             malus = random.randint(1, 3)
             data['player_1_pos'] -= malus
-        elif x == 24:
+        elif player1_loc == 24:
             malus = random.randint(1, 3)
             data['player_1_pos'] -= malus
-        elif x == 25:
+        elif player1_loc == 25:
             with open('players_pos.txt', 'w') as score_file:
                 json.dump(data, score_file)
             screen_game.blit(clicker_rule, (0, 0))
@@ -498,11 +498,15 @@ Detect the current location of the pawn 1 and apply case effect
             clicker_game()
 
 
-    def action_player_2(x):
-        if x == 1:
+    def action_player_2(player2_loc):
+        """
+Detect the current location of the pawn 2 and apply case effect
+        :param player2_loc: current location of pawn 2
+        """
+        if player2_loc == 1:
             bonus = random.randint(0, 1)
             data['player_2_pos'] += bonus
-        elif x == 2:
+        elif player2_loc == 2:
             with open('players_pos.txt', 'w') as score_file:
                 json.dump(data, score_file)
             screen_game.blit(clicker_rule, (0, 0))
@@ -510,13 +514,13 @@ Detect the current location of the pawn 1 and apply case effect
             pygame.time.delay(5000)
             pygame.display.quit()
             clicker_game()
-        elif x == 3:
+        elif player2_loc == 3:
             malus = random.randint(1, 2)
             data['player_2_pos'] -= malus
-        elif x == 4:
+        elif player2_loc == 4:
             bonus = random.randint(1, 3)
             data['player_2_pos'] += bonus
-        elif x == 6:
+        elif player2_loc == 6:
             with open('players_pos.txt', 'w') as score_file:
                 json.dump(data, score_file)
             screen_game.blit(coin_flip_rules, (0, 0))
@@ -524,10 +528,10 @@ Detect the current location of the pawn 1 and apply case effect
             pygame.time.delay(5000)
             pygame.display.quit()
             coin_flip_game()
-        elif x == 7:
+        elif player2_loc == 7:
             bonus = random.randint(1, 3)
             data['player_2_pos'] += bonus
-        elif x == 9:
+        elif player2_loc == 9:
             with open('players_pos.txt', 'w') as score_file:
                 json.dump(data, score_file)
             screen_game.blit(coin_flip_rules, (0, 0))
@@ -535,7 +539,7 @@ Detect the current location of the pawn 1 and apply case effect
             pygame.time.delay(5000)
             pygame.display.quit()
             coin_flip_game()
-        elif x == 11:
+        elif player2_loc == 11:
             with open('players_pos.txt', 'w') as score_file:
                 json.dump(data, score_file)
             screen_game.blit(clicker_rule, (0, 0))
@@ -543,7 +547,7 @@ Detect the current location of the pawn 1 and apply case effect
             pygame.time.delay(5000)
             pygame.display.quit()
             clicker_game()
-        elif x == 12:
+        elif player2_loc == 12:
             with open('players_pos.txt', 'w') as score_file:
                 json.dump(data, score_file)
             screen_game.blit(coin_flip_rules, (0, 0))
@@ -551,10 +555,10 @@ Detect the current location of the pawn 1 and apply case effect
             pygame.time.delay(5000)
             pygame.display.quit()
             coin_flip_game()
-        elif x == 13:
+        elif player2_loc == 13:
             bonus = random.randint(0, 1)
             data['player_2_pos'] += bonus
-        elif x == 15:
+        elif player2_loc == 15:
             with open('players_pos.txt', 'w') as score_file:
                 json.dump(data, score_file)
             screen_game.blit(clicker_rule, (0, 0))
@@ -562,10 +566,10 @@ Detect the current location of the pawn 1 and apply case effect
             pygame.time.delay(5000)
             pygame.display.quit()
             clicker_game()
-        elif x == 16:
+        elif player2_loc == 16:
             malus = random.randint(1, 3)
             data['player_2_pos'] -= malus
-        elif x == 17:
+        elif player2_loc == 17:
             with open('players_pos.txt', 'w') as score_file:
                 json.dump(data, score_file)
             screen_game.blit(coin_flip_rules, (0, 0))
@@ -573,7 +577,7 @@ Detect the current location of the pawn 1 and apply case effect
             pygame.time.delay(5000)
             pygame.display.quit()
             coin_flip_game()
-        elif x == 18:
+        elif player2_loc == 18:
             with open('players_pos.txt', 'w') as score_file:
                 json.dump(data, score_file)
             screen_game.blit(clicker_rule, (0, 0))
@@ -581,13 +585,13 @@ Detect the current location of the pawn 1 and apply case effect
             pygame.time.delay(5000)
             pygame.display.quit()
             clicker_game()
-        elif x == 19:
+        elif player2_loc == 19:
             malus = random.randint(1, 3)
             data['player_2_pos'] -= malus
-        elif x == 21:
+        elif player2_loc == 21:
             bonus = random.randint(0, 1)
             data['player_2_pos'] += bonus
-        elif x == 22:
+        elif player2_loc == 22:
             with open('players_pos.txt', 'w') as score_file:
                 json.dump(data, score_file)
             screen_game.blit(coin_flip_rules, (0, 0))
@@ -595,13 +599,13 @@ Detect the current location of the pawn 1 and apply case effect
             pygame.time.delay(5000)
             pygame.display.quit()
             coin_flip_game()
-        elif x == 23:
+        elif player2_loc == 23:
             malus = random.randint(1, 3)
             data['player_2_pos'] -= malus
-        elif x == 24:
+        elif player2_loc == 24:
             malus = random.randint(1, 3)
             data['player_2_pos'] -= malus
-        elif x == 25:
+        elif player2_loc == 25:
             with open('players_pos.txt', 'w') as score_file:
                 json.dump(data, score_file)
             screen_game.blit(clicker_rule, (0, 0))
