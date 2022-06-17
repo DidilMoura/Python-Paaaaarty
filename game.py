@@ -388,7 +388,7 @@ Detect the current location of the pawn 1 and apply case effect
         """
         if player1_loc == 1:
             bonus = random.randint(0, 1)  # generate the number of case you can move forward
-            data['player_1_pos'] += bonus
+            player1_loc += bonus
         elif player1_loc == 2:
             with open('players_pos.txt', 'w') as score_file: # save our data in a file to reload it when we launch the game
                 json.dump(data, score_file)
@@ -399,10 +399,10 @@ Detect the current location of the pawn 1 and apply case effect
             clicker_game()
         elif player1_loc == 3:
             malus = random.randint(1, 2)  # generate the number of case you can go back
-            data['player_1_pos'] -= malus
+            player1_loc -= malus
         elif player1_loc == 4:
             bonus = random.randint(1, 3)
-            data['player_1_pos'] += bonus
+            player1_loc += bonus
         elif player1_loc == 6:
             with open('players_pos.txt', 'w') as score_file:
                 json.dump(data, score_file)
@@ -413,7 +413,7 @@ Detect the current location of the pawn 1 and apply case effect
             coin_flip_game()
         elif player1_loc == 7:
             bonus = random.randint(1, 3)
-            data['player_1_pos'] += bonus
+            player1_loc += bonus
         elif player1_loc == 9:
             with open('players_pos.txt', 'w') as score_file:
                 json.dump(data, score_file)
@@ -440,7 +440,7 @@ Detect the current location of the pawn 1 and apply case effect
             coin_flip_game()
         elif player1_loc == 13:
             bonus = random.randint(1, 3)
-            data['player_1_pos'] += bonus
+            player1_loc += bonus
         elif player1_loc == 15:
             with open('players_pos.txt', 'w') as score_file:
                 json.dump(data, score_file)
@@ -451,7 +451,7 @@ Detect the current location of the pawn 1 and apply case effect
             clicker_game()
         elif player1_loc == 16:
             malus = random.randint(1, 3)
-            data['player_1_pos'] -= malus
+            player1_loc -= malus
         elif player1_loc == 17:
             with open('players_pos.txt', 'w') as score_file:
                 json.dump(data, score_file)
@@ -470,10 +470,10 @@ Detect the current location of the pawn 1 and apply case effect
             clicker_game()
         elif player1_loc == 19:
             malus = random.randint(1, 3)
-            data['player_1_pos'] -= malus
+            player1_loc -= malus
         elif player1_loc == 21:
             bonus = random.randint(1, 1)
-            data['player_1_pos'] += bonus
+            player1_loc += bonus
         elif player1_loc == 22:
             with open('players_pos.txt', 'w') as score_file:
                 json.dump(data, score_file)
@@ -484,10 +484,10 @@ Detect the current location of the pawn 1 and apply case effect
             coin_flip_game()
         elif player1_loc == 23:
             malus = random.randint(1, 3)
-            data['player_1_pos'] -= malus
+            player1_loc -= malus
         elif player1_loc == 24:
             malus = random.randint(1, 3)
-            data['player_1_pos'] -= malus
+            player1_loc -= malus
         elif player1_loc == 25:
             with open('players_pos.txt', 'w') as score_file:
                 json.dump(data, score_file)
@@ -505,7 +505,7 @@ Detect the current location of the pawn 2 and apply case effect
         """
         if player2_loc == 1:
             bonus = random.randint(0, 1)
-            data['player_2_pos'] += bonus
+            player2_loc += bonus
         elif player2_loc == 2:
             with open('players_pos.txt', 'w') as score_file:
                 json.dump(data, score_file)
@@ -516,10 +516,10 @@ Detect the current location of the pawn 2 and apply case effect
             clicker_game()
         elif player2_loc == 3:
             malus = random.randint(1, 2)
-            data['player_2_pos'] -= malus
+            player2_loc -= malus
         elif player2_loc == 4:
             bonus = random.randint(1, 3)
-            data['player_2_pos'] += bonus
+            player2_loc += bonus
         elif player2_loc == 6:
             with open('players_pos.txt', 'w') as score_file:
                 json.dump(data, score_file)
@@ -530,7 +530,7 @@ Detect the current location of the pawn 2 and apply case effect
             coin_flip_game()
         elif player2_loc == 7:
             bonus = random.randint(1, 3)
-            data['player_2_pos'] += bonus
+            player2_loc += bonus
         elif player2_loc == 9:
             with open('players_pos.txt', 'w') as score_file:
                 json.dump(data, score_file)
@@ -557,7 +557,7 @@ Detect the current location of the pawn 2 and apply case effect
             coin_flip_game()
         elif player2_loc == 13:
             bonus = random.randint(0, 1)
-            data['player_2_pos'] += bonus
+            player2_loc += bonus
         elif player2_loc == 15:
             with open('players_pos.txt', 'w') as score_file:
                 json.dump(data, score_file)
@@ -568,7 +568,7 @@ Detect the current location of the pawn 2 and apply case effect
             clicker_game()
         elif player2_loc == 16:
             malus = random.randint(1, 3)
-            data['player_2_pos'] -= malus
+            player2_loc -= malus
         elif player2_loc == 17:
             with open('players_pos.txt', 'w') as score_file:
                 json.dump(data, score_file)
@@ -587,7 +587,7 @@ Detect the current location of the pawn 2 and apply case effect
             clicker_game()
         elif player2_loc == 19:
             malus = random.randint(1, 3)
-            data['player_2_pos'] -= malus
+            player2_loc -= malus
         elif player2_loc == 21:
             bonus = random.randint(0, 1)
             data['player_2_pos'] += bonus
@@ -601,10 +601,10 @@ Detect the current location of the pawn 2 and apply case effect
             coin_flip_game()
         elif player2_loc == 23:
             malus = random.randint(1, 3)
-            data['player_2_pos'] -= malus
+            player2_loc -= malus
         elif player2_loc == 24:
             malus = random.randint(1, 3)
-            data['player_2_pos'] -= malus
+            player2_loc -= malus
         elif player2_loc == 25:
             with open('players_pos.txt', 'w') as score_file:
                 json.dump(data, score_file)
@@ -630,7 +630,7 @@ Detect the current location of the pawn 2 and apply case effect
             result_1 = roll_dice(score)  # allocate result of the roll to a variable
             data['player_1_pos'] += result_1  # add the result to the player location to be able to move it
 
-            # calling the next functions to dont have multiple pawn 1 on window
+            # calling the next functions to don't have multiple pawn 1 on window
 
             player_1_before_movements(data['player_2_pos'])  # call the function
             dice_result(result_1)  # call the function

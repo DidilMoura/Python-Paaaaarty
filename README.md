@@ -9,7 +9,7 @@ case du plateau le plus rapidement possible.
 
 Les cases possèdent un code couleur correspondant à un évènement en particulier comme par exemple :
 
-    --> Mini jeu (Clicker, Pile ou face, Question pour un Python)
+    --> Mini jeu (Clicker, Pile ou face)
     --> Bonus (+3, +2, +1)
     --> Malus (-3, -2, -1)
 
